@@ -1,0 +1,40 @@
+name: Proponer una mejora o un proveedor
+description: Un proveedor nuevo, una opción que falta o un cambio en la API.
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Tipo
+      options:
+        - Proveedor nuevo
+        - Opción o función en un proveedor existente
+        - Cambio en el núcleo
+        - Documentación
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué problema resuelve
+      description: Qué intentas hacer en tu app de Vue Native y qué te lo impide hoy.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Propuesta
+      description: Cómo te gustaría usarlo. Un fragmento de código ayuda mucho.
+      render: ts
+  - type: input
+    id: docs
+    attributes:
+      label: Documentación del proveedor
+      description: Si es un proveedor nuevo, el enlace a su guía de OAuth 2.0 / OpenID Connect.
+      placeholder: https://
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribuir
+      options:
+        - label: Me gustaría enviar el PR.

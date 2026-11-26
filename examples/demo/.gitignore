@@ -1,0 +1,34 @@
+node_modules/
+dist/
+*.xcuserstate
+*.xcuserdatad/
+DerivedData/
+.build/
+build/
+ios/*.xcodeproj/
+ios/*.xcworkspace/
+macos/*.xcodeproj/
+macos/*.xcworkspace/
+.gradle/
+local.properties
+*.apk
+*.aab
+.DS_Store
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.keystore
+*.jks
+
+# Vendored from @thelacanians/vue-native-cli by scripts/vendor-native.mjs
+native/
+# Copied by `vue-native-social-login setup`
+app/native/SocialLoginAuthSession.vue
+app/generated/
+# Copied by `vue-native run android`
+android/app/src/main/assets/vue-native-bundle.js
+build/

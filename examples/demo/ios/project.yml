@@ -1,0 +1,49 @@
+name: demo
+options:
+  bundleIdPrefix: com.vuenative
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+
+packages:
+  VueNativeCore:
+    path: ../native/ios/VueNativeCore
+  # <VSVG> ships in its own SPM package: it is the only component that needs
+  # SVGKit, so an app that never renders an SVG can delete this entry (and the
+  # product dependency below) and never resolve SVGKit at all — nor the
+  # CocoaLumberjack pin SVGKit's stale platform floors force on every consumer
+  # of it. Like VueNativeCore it is vendored by local path, because it depends
+  # on ../VueNativeCore and on VueNativeShared by relative path.
+  VueNativeCoreSVG:
+    path: ../native/ios/VueNativeCoreSVG
+
+targets:
+  demo:
+    type: application
+    platform: iOS
+    sources:
+      - Sources
+      - path: ../dist/vue-native-bundle.js
+        buildPhase: resources
+        optional: true
+    dependencies:
+      - package: VueNativeCore
+        product: VueNativeCore
+      # <VSVG> ships in its own product: it is the only component that needs
+      # SVGKit, so an app that never renders an SVG can delete these two lines
+      # (and the VueNativeCoreSVG package entry above) and never resolve SVGKit
+      # at all. It is listed here so <VSVG> works out of the box in a scaffolded
+      # app; Sources/AppDelegate.swift calls VueNativeCoreSVG.register() to
+      # activate it.
+      - package: VueNativeCoreSVG
+        product: VueNativeCoreSVG
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.franciscodlx.socialauth.vndemo
+        INFOPLIST_FILE: Sources/Info.plist
+        SWIFT_VERSION: "5.9"
+        GENERATE_INFOPLIST_FILE: false
+        # Expanded into Info.plist's VueNativeDevServerURL. Overridable per
+        # build: `xcodebuild DEV_SERVER_URL=ws://localhost:9000 ...`, which is
+        # what `vue-native run ios --port 9000` passes.
+        DEV_SERVER_URL: "ws://localhost:8174"

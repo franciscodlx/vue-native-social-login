@@ -1,0 +1,56 @@
+{
+  "name": "@franciscodlxdev/vue-native-telegram-login",
+  "version": "0.1.0",
+  "description": "Log in with Telegram (OpenID Connect + PKCE) for Vue Native (vue-native.dev) in the system browser, code exchanged by your backend. No client secret in the app.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "!**/__tests__",
+    "!**/__fixtures__"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "vue-native",
+    "vue",
+    "telegram",
+    "telegram-login",
+    "oauth2",
+    "openid-connect",
+    "pkce",
+    "social-login"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscodlx/vue-native-social-login.git",
+    "directory": "packages/telegram-login"
+  },
+  "author": "Francisco (https://github.com/franciscodlx)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franciscodlx/vue-native-social-login/issues"
+  },
+  "homepage": "https://github.com/franciscodlx/vue-native-social-login/tree/main/packages/telegram-login#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@franciscodlxdev/vue-native-auth-core": "^0.1.0"
+  },
+  "devDependencies": {
+    "@franciscodlxdev/vue-native-auth-core": "workspace:*"
+  }
+}

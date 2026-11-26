@@ -1,0 +1,42 @@
+name: Release
+
+# Runs on every merge to main (its CI ran on the pull request).
+# Publishes to npm every package whose version in
+# package.json is not on npm yet, then tags it and opens a GitHub release.
+# To release: bump the version in your PR (`pnpm changeset` + `pnpm version-packages`)
+# and merge it. Nothing to publish → the job ends without changes.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # run it again by hand, e.g. after setting up a registry
+
+permissions: {}
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  npm:
+    name: Publish to npm
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # tags and GitHub releases
+      id-token: write # npm trusted publishing (OIDC) and provenance, no token
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      # No registry-url: it would set NODE_AUTH_TOKEN and npm would skip OIDC.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: npm with trusted publishing (≥ 11.5.1)
+        run: npm install -g npm@^11.5.1
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: node scripts/release.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_SHA: ${{ github.sha }}

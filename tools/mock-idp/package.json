@@ -1,0 +1,11 @@
+{
+  "name": "@franciscodlxdev/mock-idp",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local OAuth 2.0 / OpenID Connect server to try the plugins without real provider credentials",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test"
+  }
+}

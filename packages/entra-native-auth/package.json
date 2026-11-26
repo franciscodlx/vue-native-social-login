@@ -1,0 +1,56 @@
+{
+  "name": "@franciscodlxdev/vue-native-entra-native-auth",
+  "version": "0.1.0",
+  "description": "Microsoft Entra External ID native authentication for Vue Native (vue-native.dev): sign-up, sign-in and password reset with your own screens, plus browser fallback.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "!**/__tests__",
+    "!**/__fixtures__"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "vue-native",
+    "vue",
+    "microsoft",
+    "entra",
+    "entra-external-id",
+    "msal",
+    "native-authentication",
+    "ciam"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscodlx/vue-native-social-login.git",
+    "directory": "packages/entra-native-auth"
+  },
+  "author": "Francisco (https://github.com/franciscodlx)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franciscodlx/vue-native-social-login/issues"
+  },
+  "homepage": "https://github.com/franciscodlx/vue-native-social-login/tree/main/packages/entra-native-auth#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@franciscodlxdev/vue-native-auth-core": "^0.1.0"
+  },
+  "devDependencies": {
+    "@franciscodlxdev/vue-native-auth-core": "workspace:*"
+  }
+}

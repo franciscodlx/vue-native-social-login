@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "jsx": "preserve",
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "skipLibCheck": true,
+    "types": [],
+    "paths": {
+      "vue": [
+        "./node_modules/@thelacanians/vue-native-runtime/dist/index.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "app/**/*",
+    "env.d.ts"
+  ]
+}

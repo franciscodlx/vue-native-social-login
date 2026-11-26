@@ -1,0 +1,88 @@
+name: CI
+
+# Pull requests only. main takes changes through merged pull requests alone
+# (ruleset: PR required, these checks must pass), so the merged code already
+# passed here; release.yml publishes it without running the suite again.
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, types, tests, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - name: Mocks and example backends
+        run: for dir in tools/*/; do (cd "$dir" && node --test) || exit 1; done
+      - run: pnpm --filter @franciscodlxdev/vue-native-social-login-demo typecheck
+      - name: Packages publish cleanly (dry run)
+        run: node scripts/release.mjs --dry-run
+
+  # The demo goes through the same steps an app does: vendor vue-native's
+  # framework, `vue-native-social-login setup`, then the native build (the
+  # codegen turns app/native/SocialLoginAuthSession.vue into Swift/Kotlin).
+  android:
+    name: Demo (Android)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: oven-sh/setup-bun@v2 # the vue-native CLI builds with Bun
+      - uses: actions/setup-java@v6
+        with:
+          distribution: zulu
+          java-version: '17'
+          cache: gradle
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - working-directory: examples/demo
+        run: pnpm setup:native
+      - name: Build
+        working-directory: examples/demo
+        run: pnpm exec vue-native build android --mode debug
+
+  ios:
+    name: Demo (iOS)
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: oven-sh/setup-bun@v2
+      - run: brew install xcodegen
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - working-directory: examples/demo
+        run: pnpm setup:native
+      # `vue-native build ios` archives a signed app; the simulator build
+      # needs no team.
+      - name: Build (simulator, unsigned)
+        working-directory: examples/demo
+        run: |
+          pnpm build
+          (cd ios && xcodegen generate --spec project.yml)
+          xcodebuild -project ios/demo.xcodeproj -scheme demo \
+            -sdk iphonesimulator -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO build

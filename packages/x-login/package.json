@@ -1,0 +1,57 @@
+{
+  "name": "@franciscodlxdev/vue-native-x-login",
+  "version": "0.1.0",
+  "description": "Sign in with X (Twitter) for Vue Native (vue-native.dev): OAuth 2.0 + PKCE in the system browser, as a public client. No consumer secret in the app.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "!**/__tests__",
+    "!**/__fixtures__"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "vue-native",
+    "vue",
+    "x",
+    "twitter",
+    "twitter-login",
+    "twitter-signin",
+    "oauth2",
+    "pkce",
+    "social-login"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscodlx/vue-native-social-login.git",
+    "directory": "packages/x-login"
+  },
+  "author": "Francisco (https://github.com/franciscodlx)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franciscodlx/vue-native-social-login/issues"
+  },
+  "homepage": "https://github.com/franciscodlx/vue-native-social-login/tree/main/packages/x-login#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@franciscodlxdev/vue-native-auth-core": "^0.1.0"
+  },
+  "devDependencies": {
+    "@franciscodlxdev/vue-native-auth-core": "workspace:*"
+  }
+}

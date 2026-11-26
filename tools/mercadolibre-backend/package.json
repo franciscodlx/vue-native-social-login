@@ -1,0 +1,11 @@
+{
+  "name": "@franciscodlxdev/mercadolibre-backend-example",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Example backend for react-native-mercadolibre-login: https redirect bounce and code exchange with the client secret + PKCE verifier",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test"
+  }
+}

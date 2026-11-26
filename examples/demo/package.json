@@ -1,0 +1,37 @@
+{
+  "name": "@franciscodlxdev/vue-native-social-login-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup:native": "node scripts/vendor-native.mjs && vue-native-social-login setup --scheme linkedinexample,xloginexample,meliexample,twitchexample,presetsexample,telegramexample,tiktokexample,entraexample",
+    "ios": "vue-native run ios",
+    "android": "vue-native run android --activity com.vuenative.demo.MainActivity",
+    "build": "vite build",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@franciscodlxdev/vue-native-auth-core": "workspace:*",
+    "@franciscodlxdev/vue-native-entra-native-auth": "workspace:*",
+    "@franciscodlxdev/vue-native-linkedin-login": "workspace:*",
+    "@franciscodlxdev/vue-native-mercadolibre-login": "workspace:*",
+    "@franciscodlxdev/vue-native-oauth-presets": "workspace:*",
+    "@franciscodlxdev/vue-native-telegram-login": "workspace:*",
+    "@franciscodlxdev/vue-native-tiktok-login": "workspace:*",
+    "@franciscodlxdev/vue-native-twitch-login": "workspace:*",
+    "@franciscodlxdev/vue-native-x-login": "workspace:*",
+    "@thelacanians/vue-native-navigation": "^0.23.3",
+    "@thelacanians/vue-native-runtime": "^0.23.3",
+    "vue": "3.5.40"
+  },
+  "devDependencies": {
+    "@thelacanians/vue-native-cli": "^0.23.3",
+    "@thelacanians/vue-native-vite-plugin": "^0.23.3",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "esbuild": "^0.27.0",
+    "vite": "^8.0.0",
+    "typescript": "~6.0.3",
+    "vue-tsc": "^3.1.0"
+  },
+  "description": "Vue Native (vue-native.dev) app to try every provider of the social login family"
+}

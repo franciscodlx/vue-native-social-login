@@ -1,0 +1,15 @@
+.DS_Store
+.vscode/
+.idea/
+
+# Node
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+
+# Secrets
+.env
+.env.*
+!.env.example

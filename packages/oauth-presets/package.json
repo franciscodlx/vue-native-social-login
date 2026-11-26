@@ -1,0 +1,57 @@
+{
+  "name": "@franciscodlxdev/vue-native-oauth-presets",
+  "version": "0.1.0",
+  "description": "Ready-made GitHub, Discord, Slack and Strava logins for Vue Native (vue-native.dev): system browser, code exchanged by your backend.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "!**/__tests__",
+    "!**/__fixtures__"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "vue-native",
+    "vue",
+    "oauth2",
+    "pkce",
+    "github-login",
+    "discord-login",
+    "slack-login",
+    "strava-login",
+    "social-login"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscodlx/vue-native-social-login.git",
+    "directory": "packages/oauth-presets"
+  },
+  "author": "Francisco (https://github.com/franciscodlx)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franciscodlx/vue-native-social-login/issues"
+  },
+  "homepage": "https://github.com/franciscodlx/vue-native-social-login/tree/main/packages/oauth-presets#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@franciscodlxdev/vue-native-auth-core": "^0.1.0"
+  },
+  "devDependencies": {
+    "@franciscodlxdev/vue-native-auth-core": "workspace:*"
+  }
+}

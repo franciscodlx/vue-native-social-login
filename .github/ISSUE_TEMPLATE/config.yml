@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Reportar una vulnerabilidad
+    url: https://github.com/franciscodlx/vue-native-social-login/security/advisories/new
+    about: En privado, no en un issue público. Ver SECURITY.md.
+  - name: Otras plataformas de la familia
+    url: https://github.com/franciscodlx?tab=repositories&q=social-login
+    about: React Native, Flutter, Capacitor/Ionic, NativeScript y NativePHP; esta es la de Vue Native.

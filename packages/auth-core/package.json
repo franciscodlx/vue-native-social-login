@@ -1,0 +1,62 @@
+{
+  "name": "@franciscodlxdev/vue-native-auth-core",
+  "version": "0.1.0",
+  "description": "OAuth 2.0 + PKCE in the system browser for Vue Native (vue-native.dev): the core of the social login family",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "native",
+    "bin",
+    "!**/__tests__",
+    "!**/__fixtures__"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "vue-native",
+    "vue",
+    "oauth",
+    "oauth2",
+    "pkce",
+    "oidc",
+    "social-login"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscodlx/vue-native-social-login.git",
+    "directory": "packages/auth-core"
+  },
+  "author": "Francisco (https://github.com/franciscodlx)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franciscodlx/vue-native-social-login/issues"
+  },
+  "homepage": "https://github.com/franciscodlx/vue-native-social-login/tree/main/packages/auth-core#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@thelacanians/vue-native-runtime": ">=0.23.3 <1",
+    "vue": "^3.5.0"
+  },
+  "bin": {
+    "vue-native-social-login": "./bin/setup.mjs"
+  },
+  "devDependencies": {
+    "@thelacanians/vue-native-runtime": "^0.23.3",
+    "vue": "3.5.40"
+  }
+}

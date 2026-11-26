@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en</string>
+  <key>CFBundleDisplayName</key>
+  <string>demo</string>
+  <key>CFBundleExecutable</key>
+  <string>$(EXECUTABLE_NAME)</string>
+  <key>CFBundleIdentifier</key>
+  <string>dev.franciscodlx.socialauth.vndemo</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundleName</key>
+  <string>$(PRODUCT_NAME)</string>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>CFBundleShortVersionString</key>
+  <string>1.0</string>
+  <key>CFBundleVersion</key>
+  <string>1</string>
+  <key>LSRequiresIPhoneOS</key>
+  <true/>
+  <key>UIApplicationSceneManifest</key>
+  <dict>
+    <key>UIApplicationSupportsMultipleScenes</key>
+    <false/>
+    <key>UISceneConfigurations</key>
+    <dict>
+      <key>UIWindowSceneSessionRoleApplication</key>
+      <array>
+        <dict>
+          <key>UISceneConfigurationName</key>
+          <string>Default Configuration</string>
+          <key>UISceneDelegateClassName</key>
+          <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+        </dict>
+      </array>
+    </dict>
+  </dict>
+  <key>UILaunchScreen</key>
+  <dict/>
+  <key>UISupportedInterfaceOrientations</key>
+  <array>
+    <string>UIInterfaceOrientationPortrait</string>
+    <string>UIInterfaceOrientationLandscapeLeft</string>
+    <string>UIInterfaceOrientationLandscapeRight</string>
+  </array>
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
+  </dict>
+  <!--
+    iOS privacy usage descriptions.
+    These are NOT optional comments: iOS terminates the process the moment a
+    gated framework (camera, microphone, location, photos, contacts, calendars,
+    Bluetooth, Face ID) is touched without its usage string, so a commented-out
+    key turns the first useCamera() call in a fresh app into a hard crash with
+    no diagnostic. The strings are only *shown* when the corresponding API is
+    actually called, so an app that never uses one never prompts for it.
+    Before App Store submission, delete the entries your app does not use —
+    declaring a sensitive purpose you never exercise is itself a rejection
+    reason.
+  -->
+  <key>NSCameraUsageDescription</key><string>This app uses the camera when you choose to take a photo or scan a code.</string>
+  <key>NSMicrophoneUsageDescription</key><string>This app records audio when you choose to record.</string>
+  <key>NSLocationWhenInUseUsageDescription</key><string>This app uses your location while in use when you choose to share it.</string>
+  <key>NSPhotoLibraryUsageDescription</key><string>This app reads from your photo library when you choose a photo.</string>
+  <key>NSContactsUsageDescription</key><string>This app reads contacts when you choose to look one up.</string>
+  <key>NSCalendarsUsageDescription</key><string>This app reads and writes calendar events when you choose to.</string>
+  <key>NSBluetoothAlwaysUsageDescription</key><string>This app connects to Bluetooth devices when you choose to pair one.</string>
+  <key>NSFaceIDUsageDescription</key><string>This app uses Face ID or Touch ID when you choose to authenticate.</string>
+  <!--
+    Dev-server URL for hot reload, expanded from the DEV_SERVER_URL build
+    setting at build time so `vue-native run ios --port N` can redirect the
+    host without editing any project file. Only read in DEBUG builds.
+  -->
+  <key>VueNativeDevServerURL</key>
+  <string>$(DEV_SERVER_URL)</string>
+</dict>
+</plist>

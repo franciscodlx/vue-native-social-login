@@ -1,0 +1,110 @@
+name: Reportar un error
+description: Algo no funciona como dice la documentación.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por reportarlo. **No pegues client secrets, tokens ni códigos de autorización**: si hace falta un log, reemplázalos por `***`.
+        Si es una vulnerabilidad, no abras un issue: sigue [SECURITY.md](../blob/main/SECURITY.md).
+  - type: dropdown
+    id: package
+    attributes:
+      label: Paquete
+      options:
+        - vue-native-auth-core
+        - vue-native-linkedin-login
+        - vue-native-x-login
+        - vue-native-mercadolibre-login
+        - vue-native-twitch-login
+        - vue-native-oauth-presets
+        - vue-native-telegram-login
+        - vue-native-tiktok-login
+        - vue-native-entra-native-auth
+    validations:
+      required: true
+  - type: input
+    id: package-version
+    attributes:
+      label: Versión del paquete
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Proveedor
+      options:
+        - LinkedIn
+        - X (Twitter)
+        - Mercado Libre
+        - Twitch
+        - GitHub
+        - Discord
+        - Slack
+        - Strava
+        - Telegram
+        - TikTok
+        - Entra External ID
+        - Otro / proveedor propio
+        - Ninguno (núcleo)
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Plataforma
+      multiple: true
+      options:
+        - iOS (dispositivo)
+        - iOS (simulador)
+        - Android (dispositivo)
+        - Android (emulador)
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Versión de Vue Native
+      placeholder: "Vue Native 0.23.3; iOS 26.1 / Android 16"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducirlo
+      description: Idealmente con la app demo y `tools/mock-idp`, para descartar la configuración del proveedor.
+      placeholder: |
+        1. signIn con estas opciones: ...
+        2. Aprobar en el navegador
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Qué esperabas
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Qué pasó
+      description: Incluye el código de error (`CANCELLED`, `NETWORK`, `INVALID_CONFIG`, `PROVIDER_ERROR`, `NOT_SUPPORTED`) y el mensaje.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Xcode, Logcat o la consola, sin secrets.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Antes de enviar
+      options:
+        - label: Revisé que el redirect URI registrado en el proveedor coincide exactamente con el que uso.
+          required: true
+        - label: Quité secrets, tokens y códigos del reporte.
+          required: true
