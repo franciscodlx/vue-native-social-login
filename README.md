@@ -1,6 +1,10 @@
 # vue-native-social-login
 
 <p align="center">
+  <img src=".github/assets/demo.gif" width="280" alt="Demo en Android: iniciar sesión con GitHub y X">
+</p>
+
+<p align="center">
 
 [![npm](https://img.shields.io/npm/v/@franciscodlxdev/vue-native-auth-core?label=npm&color=cb3837)](https://www.npmjs.com/package/@franciscodlxdev/vue-native-auth-core) [![CI](https://github.com/franciscodlx/vue-native-social-login/actions/workflows/ci.yml/badge.svg)](https://github.com/franciscodlx/vue-native-social-login/actions/workflows/ci.yml) [![Licencia MIT](https://img.shields.io/badge/licencia-MIT-blue.svg)](LICENSE)
 
